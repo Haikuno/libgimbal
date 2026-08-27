@@ -2,7 +2,7 @@
 
 #ifdef GBL_NO_TIMESPEC_
 
-#if defined(_WIN32)
+#if defined(__MINGW32__)
 #include <windows.h>
 #endif
 
@@ -10,7 +10,7 @@ int timespec_get(struct timespec* pSpec, int base) {
     if(base != TIME_UTC)
         return 0;
 
-#if defined(_WIN32)
+#if defined(__MINGW32__)
     FILETIME fileTime;
     ULARGE_INTEGER ticks;
     const ULONGLONG windowsToUnixEpoch100ns = 116444736000000000ULL;
